@@ -6,7 +6,6 @@ use App\Models\User as EloquentUserModel;
 use Src\Api\User\Domain\User;
 use Src\Api\User\Domain\ValueObjects\UserId;
 use Src\Api\User\Domain\Contracts\UserRepositoryContract;
-use Ramsey\Uuid\Uuid;
 use Src\Api\User\Domain\ValueObjects\UserEmail;
 use Src\Api\User\Domain\ValueObjects\UserEmailVerifiedDate;
 use Src\Api\User\Domain\ValueObjects\UserName;
@@ -22,10 +21,14 @@ final class EloquentUserRepository implements UserRepositoryContract
         $this->eloquentUserModel = new EloquentUserModel;
     }
 
+    public function all(): array
+    {
+       return $this->eloquentUserModel->all();
+    }
+
     public function find(UserId $id): ?User
     {
         $user = $this->eloquentUserModel->findOrFail($id->value());
-
         return new User(
             new UserName($user->name),
             new UserEmail($user->email),
