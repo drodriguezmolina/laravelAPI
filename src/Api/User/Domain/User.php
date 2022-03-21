@@ -1,5 +1,11 @@
 <?php
 
+use Src\Api\User\Domain\ValueObjects\UserEmail;
+use Src\Api\User\Domain\ValueObjects\UserEmailVerifiedDate;
+use Src\Api\User\Domain\ValueObjects\UserName;
+use Src\Api\User\Domain\ValueObjects\UserPassword;
+use Src\Api\User\Domain\ValueObjects\UserRememberToken;
+
 final class User
 {
     private UserName $name;
