@@ -17,9 +17,7 @@ final class GetUserController
 
     public function __invoke(Request $request)
     {
-        $userId = (int)$request->id;
-
         $getUserUseCase = new GetUserUseCase($this->repository);
-        return $getUserUseCase->__invoke($userId);
+        return $getUserUseCase->__invoke((int)$request->id);
     }
 }

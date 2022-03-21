@@ -10,9 +10,9 @@ class UserResource extends JsonResource
     {
         return [
             'data' => [
-                'name' => $this->name()->value(),
-                'email' => $this->email()->value(),
-                'emailVerifiedDate' => $this->emailVerifiedDate()->value(),
+                'name' => $this->getName()->value(),
+                'email' => $this->getEmail()->value(),
+                'emailVerifiedDate' => $this->getEmailVerifiedDate()->value(),
             ]
         ];
     }
