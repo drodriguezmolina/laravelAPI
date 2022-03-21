@@ -37,8 +37,7 @@ final class EloquentUserRepository implements UserRepositoryContract
 
     public function save(User $user): void
     {
-        $this->eloquentUserModel->save([
-            'Uuid'              => $user->getUuid(),
+        $this->eloquentUserModel->create([
             'name'              => $user->getName()->value(),
             'email'             => $user->getEmail()->value(),
             'email_verified_at'  => $user->getEmailVerifiedDate()->value(),
