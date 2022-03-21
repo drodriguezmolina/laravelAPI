@@ -1,5 +1,6 @@
 <?php
 
+use Ramsey\Uuid\Uuid;
 use Src\Api\User\Domain\ValueObjects\UserEmail;
 use Src\Api\User\Domain\ValueObjects\UserEmailVerifiedDate;
 use Src\Api\User\Domain\ValueObjects\UserName;
@@ -8,6 +9,7 @@ use Src\Api\User\Domain\ValueObjects\UserRememberToken;
 
 final class User
 {
+    private Uuid $Uuid;
     private UserName $name;
     private UserEmail $email;
     private UserEmailVerifiedDate $emailVerifiedDate;
@@ -15,6 +17,7 @@ final class User
     private UserRememberToken $rememberToken;
 
     public function __construct(
+        Uuid $Uuid,
         UserName $name,
         UserEmail $email,
         UserEmailVerifiedDate $emailVerifiedDate,
@@ -22,11 +25,17 @@ final class User
         UserRememberToken $rememberToken
     )
     {
+        $this->Uuid              = $Uuid;
         $this->name              = $name;
         $this->email             = $email;
         $this->emailVerifiedDate  = $emailVerifiedDate;
         $this->password          = $password;
         $this->rememberToken     = $rememberToken;
+    }
+
+    public function getUuid(): Uuid
+    {
+        return $this->Uuid;
     }
 
     public function getName(): UserName
@@ -55,6 +64,7 @@ final class User
     }
 
     public static function create(
+        Uuid $Uuid,
         UserName $name,
         UserEmail $email,
         UserEmailVerifiedDate $emailVerifiedDate,
@@ -62,6 +72,6 @@ final class User
         UserRememberToken $rememberToken
     ): User
     {
-        return new self($name, $email, $emailVerifiedDate, $password, $rememberToken);
+        return new self($Uuid, $name, $email, $emailVerifiedDate, $password, $rememberToken);
     }
 }
