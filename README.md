@@ -42,9 +42,9 @@ Run the following command:
 ----------------------------------------
 <h2>API Endpoints</h2>
 
-<h3 id="new">Get Token</h3>
+<h3>Get Token</h3>
 
-<h4 id="new">Create new user</h4>
+<h4>Create new user</h4>
 ```
 POST - http://127.0.0.1:8000/api/user
 Header: Authorization: Bearer (token)
@@ -58,7 +58,7 @@ Body object:
 
 <strong>Copy the token that this call returns and send it in the header of the following requests</strong>
 
-<h3 id="new">Update user</h3>
+<h3>Update user</h3>
 ```
 PUT - http://127.0.0.1:8000/api/user/1
 Header: Authorization: Bearer (token)
@@ -69,25 +69,25 @@ Body object:
 }
 ```
 
-<h3 id="new">Get user</h3>
+<h3>Get user</h3>
 ```
 GET - http://127.0.0.1:8000/api/user/1
 Header: Authorization: Bearer (token)
 ```
 
-<h3 id="new">Delete user</h3>
+<h3>Delete user</h3>
 ```
 DELETE - http://127.0.0.1:8000/api/user/1
 Header: Authorization: Bearer (token)
 ```
 
-<h3 id="new">Delete user</h3>
+<h3>Delete user</h3>
 ```
 DELETE - http://127.0.0.1:8000/api/user/1
 Header: Authorization: Bearer (token)
 ```
 
-<h3 id="new">Get Most Used Domains</h3>
+<h3>Get Most Used Domains</h3>
 ```
 GET - http://127.0.0.1:8000/api/user/most-used-domains
 Header: Authorization: Bearer (token)
