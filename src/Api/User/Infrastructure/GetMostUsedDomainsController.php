@@ -3,7 +3,7 @@
 namespace Src\Api\User\Infrastructure;
 
 use Illuminate\Support\Collection;
-use Src\Api\User\Application\GetMostUserDomainsUseCase;
+use Src\Api\User\Application\GetMostUsedDomainsUseCase;
 use Src\Api\User\Infrastructure\Persistence\EloquentUserRepository;
 
 final class GetMostUsedDomainsController
@@ -17,7 +17,7 @@ final class GetMostUsedDomainsController
 
     public function __invoke(): Collection
     {
-        $getMostUsedDomainsUseCase = new GetMostUserDomainsUseCase($this->repository);
+        $getMostUsedDomainsUseCase = new GetMostUsedDomainsUseCase($this->repository);
         return $getMostUsedDomainsUseCase->__invoke();
     }
 }

@@ -5,7 +5,7 @@ namespace Src\Api\User\Application;
 use Illuminate\Support\Collection;
 use Src\Api\User\Domain\Contracts\UserRepositoryContract;
 
-final class GetMostUserDomainsUseCase
+final class GetMostUsedDomainsUseCase
 {
     private UserRepositoryContract $repository;
 
