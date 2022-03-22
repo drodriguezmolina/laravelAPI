@@ -64,7 +64,7 @@ final class EloquentUserRepository implements UserRepositoryContract
     public function delete(UserId $id): void
     {
         $this->eloquentUserModel
-            ->findOrFail($id)
+            ->findOrFail($id->value())
             ->delete();
     }
 }
