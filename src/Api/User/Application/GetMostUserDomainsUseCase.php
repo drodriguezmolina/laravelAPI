@@ -2,8 +2,8 @@
 
 namespace Src\Api\User\Application;
 
+use Illuminate\Support\Collection;
 use Src\Api\User\Domain\Contracts\UserRepositoryContract;
-use Src\Api\User\Domain\ValueObjects\UserId;
 
 final class GetMostUserDomainsUseCase
 {
@@ -14,9 +14,12 @@ final class GetMostUserDomainsUseCase
         $this->repository = $repository;
     }
 
-    public function __invoke(): array
+    public function __invoke(): Collection
     {
         $users = $this->repository->all();
-        dd($users);
+
+        $emails = collect($users)->map(function ($user){ return $user["email"]; });
+        $emailsFormatted = collect($emails)->map(function ($email){ return explode('@', $email)[1]; });
+        return $emailsFormatted->countBy();
     }
 }

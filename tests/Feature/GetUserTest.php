@@ -11,7 +11,7 @@ class GetUserTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function a_created_user_is_retrieved()
+    public function get_user()
     {
         $this->withoutExceptionHandling();
         $this->postJson('/api/user', $this->data())

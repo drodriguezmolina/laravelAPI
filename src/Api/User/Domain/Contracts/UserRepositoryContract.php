@@ -2,12 +2,13 @@
 
 namespace Src\Api\User\Domain\Contracts;
 
+use Illuminate\Database\Eloquent\Collection;
 use Src\Api\User\Domain\User;
 use Src\Api\User\Domain\ValueObjects\UserId;
 
 interface UserRepositoryContract
 {
-    public function all(): array;
+    public function all(): Collection;
 
     public function find(UserId $id): ?User;
 

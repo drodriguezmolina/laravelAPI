@@ -3,6 +3,7 @@
 namespace Src\Api\User\Infrastructure\Persistence;
 
 use App\Models\User as EloquentUserModel;
+use Illuminate\Database\Eloquent\Collection;
 use Src\Api\User\Domain\User;
 use Src\Api\User\Domain\ValueObjects\UserId;
 use Src\Api\User\Domain\Contracts\UserRepositoryContract;
@@ -21,7 +22,7 @@ final class EloquentUserRepository implements UserRepositoryContract
         $this->eloquentUserModel = new EloquentUserModel;
     }
 
-    public function all(): array
+    public function all(): Collection
     {
        return $this->eloquentUserModel->all();
     }
