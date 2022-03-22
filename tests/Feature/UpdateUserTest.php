@@ -13,16 +13,18 @@ class UpdateUserTest extends Testcase
     /** @test */
     public function a_user_is_updated()
     {
-        $this->postJson('/api/user', $this->data())
+        $response = $this->postJson('/api/user', $this->data())
             ->assertStatus(201);
 
         $user = User::first();
 
-        $this->putJson("/api/user/$user->id", [
-            'name' => "Firstname LastnameNew",
-        ])->assertStatus(200);
+        $this->withHeader('Authorization', 'Bearer ' . $response['access_token'])
+            ->putJson("/api/user/$user->id", [
+                'name' => "Firstname LastnameNew",
+            ])->assertStatus(200);
 
-        $this->json('GET', "/api/user/$user->id")
+        $this->withHeader('Authorization', 'Bearer ' . $response['access_token'])
+            ->json('GET', "/api/user/$user->id")
             ->assertStatus(200)
             ->assertJson([
                 'data' => [

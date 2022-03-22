@@ -13,14 +13,15 @@ class CreateUserTest extends Testcase
     /** @test */
     public function a_new_user_is_created()
     {
-        $this->postJson('/api/user', $this->data())
+        $response = $this->postJson('/api/user', $this->data())
             ->assertStatus(201);
 
         $this->assertCount(1, User::all());
 
         $user = User::first();
 
-        $this->json('GET', "/api/user/$user->id")
+        $this->withHeader('Authorization', 'Bearer ' . $response['access_token'])
+            ->json('GET', "/api/user/$user->id")
             ->assertStatus(200)
             ->assertJson([
                 'data' => [

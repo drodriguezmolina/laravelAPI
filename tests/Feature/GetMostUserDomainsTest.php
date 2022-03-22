@@ -12,7 +12,7 @@ class GetMostUserDomainsTest extends TestCase
     /** @test */
     public function top_3_most_user_domains_retrieved()
     {
-        $this->postJson('/api/user', [
+        $response = $this->postJson('/api/user', [
                 'name' => "Firstname Lastname",
                 'email' => "firstname.lastname@gmail.com",
                 'password' => "password_pwd"
@@ -33,7 +33,8 @@ class GetMostUserDomainsTest extends TestCase
             ])
             ->assertStatus(201);
 
-        $this->json('GET', "api/user/most-used-domains")
+        $this->withHeader('Authorization', 'Bearer ' . $response['access_token'])
+            ->json('GET', "api/user/most-used-domains")
             ->assertStatus(200)
             ->assertJson([
                 'gmail.com' => 2,

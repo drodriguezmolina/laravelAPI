@@ -14,13 +14,14 @@ class GetUserTest extends TestCase
     public function get_user()
     {
         $this->withoutExceptionHandling();
-        $this->postJson('/api/user', $this->data())
+        $response = $this->postJson('/api/user', $this->data())
             ->assertStatus(201);
 
         $this->assertCount(1, User::all());
         $user = User::first();
 
-        $this->json('GET', "/api/user/$user->id")
+        $this->withHeader('Authorization', 'Bearer ' . $response['access_token'])
+            ->json('GET', "/api/user/$user->id")
             ->assertStatus(200)
             ->assertJson([
                 'data' => [

@@ -39,15 +39,16 @@ final class EloquentUserRepository implements UserRepositoryContract
         );
     }
 
-    public function save(User $user): void
+    public function save(User $user): ?String
     {
-        $this->eloquentUserModel->create([
+        $user = $this->eloquentUserModel->create([
             'name'              => $user->getName()->value(),
             'email'             => $user->getEmail()->value(),
             'email_verified_at'  => $user->getEmailVerifiedDate()->value(),
             'password'          => $user->getPassword()->value(),
             'remember_token'    => $user->getRememberToken()->value(),
         ]);
+        return $user->createToken('auth_token')->plainTextToken;
     }
 
     public function update(UserId $id, User $user): void

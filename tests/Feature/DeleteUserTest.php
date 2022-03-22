@@ -13,14 +13,15 @@ class DeleteUserTest extends Testcase
     /** @test */
     public function a_user_is_deleted()
     {
-        $this->postJson('/api/user', $this->data())
+        $response = $this->postJson('/api/user', $this->data())
             ->assertStatus(201);
 
         $user = User::first();
 
         $this->assertCount(1, User::all());
 
-        $this->json('DELETE', "/api/user/$user->id")
+        $this->withHeader('Authorization', 'Bearer ' . $response['access_token'])
+            ->json('DELETE', "/api/user/$user->id")
             ->assertStatus(204);
 
         $this->assertCount(0, User::all());
