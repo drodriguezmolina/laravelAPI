@@ -60,7 +60,7 @@ Body object:
 
 <h3>Update user</h3>
 ```
-PUT - http://127.0.0.1:8000/api/user/1
+PUT - http://127.0.0.1:8000/api/user/{id}
 Header: Authorization: Bearer (token)
 Body object:
 {
@@ -71,19 +71,19 @@ Body object:
 
 <h3>Get user</h3>
 ```
-GET - http://127.0.0.1:8000/api/user/1
+GET - http://127.0.0.1:8000/api/user/{id}
 Header: Authorization: Bearer (token)
 ```
 
 <h3>Delete user</h3>
 ```
-DELETE - http://127.0.0.1:8000/api/user/1
+DELETE - http://127.0.0.1:8000/api/user/{id}
 Header: Authorization: Bearer (token)
 ```
 
 <h3>Delete user</h3>
 ```
-DELETE - http://127.0.0.1:8000/api/user/1
+DELETE - http://127.0.0.1:8000/api/user/{id}
 Header: Authorization: Bearer (token)
 ```
 
