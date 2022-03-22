@@ -1,64 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<div id="top"></div>
+<br />
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<!-- PROJECT INTRO -->
+<div align="center">
+<h1 align="center">LaravelAPI</h1>
+Built this api for user management protected by api token
+</div>
 
-## About Laravel
+<h2 id="installation">Installation</h2>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<strong>Configure your .env file</strong> <br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Go to the root folder of your project and run the following command<br>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```
+./vendor/bin/sail up
+```
 
-## Learning Laravel
+<h3 id="composerInstall">Composer Install</h3>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Run the following command:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```
+./vendor/bin/sail composer install
+```
 
-## Laravel Sponsors
+<h3 id="migrations">Migrations</h3>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Run the following command:
+```
+./vendor/bin/sail artisan migrate
+```
 
-### Premium Partners
+<h3 id="tests">TESTS</h3>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Run the following command:
 
-## Contributing
+```
+./vendor/bin/sail artisan test
+```
+----------------------------------------
+<h2>API Endpoints</h2>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<h3 id="new">Get Token</h3>
 
-## Code of Conduct
+<h4 id="new">Create new user</h4>
+```
+POST - http://127.0.0.1:8000/api/user
+Header: Authorization: Bearer (token)
+Body object:
+{
+"name": "Firstname Lastname",
+"email": "firstname.lastname@clicko.com",
+"password": "password_pwd"
+}
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<strong>Copy the token that this call returns and send it in the header of the following requests</strong>
 
-## Security Vulnerabilities
+<h3 id="new">Update user</h3>
+```
+PUT - http://127.0.0.1:8000/api/user/1
+Header: Authorization: Bearer (token)
+Body object:
+{
+"name": "Name Surname",
+"email": "name.surname@email.com"
+}
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<h3 id="new">Get user</h3>
+```
+GET - http://127.0.0.1:8000/api/user/1
+Header: Authorization: Bearer (token)
+```
 
-## License
+<h3 id="new">Delete user</h3>
+```
+DELETE - http://127.0.0.1:8000/api/user/1
+Header: Authorization: Bearer (token)
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<h3 id="new">Delete user</h3>
+```
+DELETE - http://127.0.0.1:8000/api/user/1
+Header: Authorization: Bearer (token)
+```
+
+<h3 id="new">Get Most Used Domains</h3>
+```
+GET - http://127.0.0.1:8000/api/user/most-used-domains
+Header: Authorization: Bearer (token)
+```
+
