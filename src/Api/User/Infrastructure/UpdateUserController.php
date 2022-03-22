@@ -20,14 +20,13 @@ final class UpdateUserController
     {
         $userId = (int)$request->id;
 
-        $getUserUseCase = new GetUserUseCase($this->repository);
-        $user           = $getUserUseCase->__invoke($userId);
-
-        $userName              = $request->input('name') ?? $user->getName()->value();
-        $userEmail             = $request->input('email') ?? $user->getEmail()->value();
-        $userEmailVerifiedDate = $user->getEmailVerifiedDate()->value();
-        $userPassword          = $user->getPassword()->value();
-        $userRememberToken     = $user->getRememberToken()->value();
+        $getUserUseCase         = new GetUserUseCase($this->repository);
+        $user                   = $getUserUseCase->__invoke($userId);
+        $userName               = $request->input('name') ?? $user->getName()->value();
+        $userEmail              = $request->input('email') ?? $user->getEmail()->value();
+        $userEmailVerifiedDate   = $user->getEmailVerifiedDate()->value();
+        $userPassword           = $user->getPassword()->value();
+        $userRememberToken      = $user->getRememberToken()->value();
 
         $updateUserUseCase = new UpdateUserUseCase($this->repository);
         $updateUserUseCase->__invoke(

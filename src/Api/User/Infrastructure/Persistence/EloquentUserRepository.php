@@ -57,7 +57,7 @@ final class EloquentUserRepository implements UserRepositoryContract
         ];
 
         $this->eloquentUserModel
-            ->find($id)
+            ->find($id->value())
             ->update($data);
     }
 

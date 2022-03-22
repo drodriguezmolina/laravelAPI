@@ -33,7 +33,7 @@ final class UpdateUserUseCase
         $id                = new UserId($userId);
         $name              = new UserName($userName);
         $email             = new UserEmail($userEmail);
-        $emailVerifiedDate = new UserEmailVerifiedDate($userEmailVerifiedDate);
+        $emailVerifiedDate  = new UserEmailVerifiedDate($userEmailVerifiedDate);
         $password          = new UserPassword($userPassword);
         $rememberToken     = new UserRememberToken($userRememberToken);
 
